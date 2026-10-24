@@ -1,4 +1,4 @@
-# vfs0090 driver for libfprint 1.94.100 (Validity 138a:0090, ThinkPad P50/T460p class)
+# vfs0090 driver for libfprint 1.94.100 (Validity 138a:0090, ThinkPad T460s and similar)
 
 A port of the match-on-host `vfs0090` driver from
 [rabbitambulance-ra/libfprint-tod-vfs0090](https://github.com/rabbitambulance-ra/libfprint-tod-vfs0090)
@@ -10,7 +10,7 @@ Unofficial and not upstream. It works on one machine so far; reports from other
 
 ## Tested on
 
-- ThinkPad P50 (20FA0045MS), sensor `138a:0090`, ROM 6.7 build 164
+- ThinkPad T460s (20FA0045MS), sensor `138a:0090`, ROM 6.7 build 164
 - Fedora 44, libfprint 1.94.100, stock fprintd + fprintd-pam
 - enroll, verify, GDM login and sudo work; the paired state survives a reboot
 
