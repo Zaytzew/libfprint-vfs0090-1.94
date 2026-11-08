@@ -3,7 +3,7 @@
 A port of the match-on-host `vfs0090` driver from
 [rabbitambulance-ra/libfprint-tod-vfs0090](https://github.com/rabbitambulance-ra/libfprint-tod-vfs0090)
 (commit `0c7427a`) into the **libfprint 1.94.100** tree, so it works with the
-stock `fprintd` and `fprintd-pam` of current distributions (tested on Fedora 44).
+stock `fprintd` and `fprintd-pam` of current distributions (tested on Fedora 44 and 45).
 
 Unofficial and not upstream. It works on one machine so far; reports from other
 `138a:0090` owners are welcome.
@@ -12,6 +12,9 @@ Unofficial and not upstream. It works on one machine so far; reports from other
 
 - ThinkPad T460s (20FA0045MS), sensor `138a:0090`, ROM 6.7 build 164
 - Fedora 44, libfprint 1.94.100, stock fprintd + fprintd-pam
+- Fedora 45 (after a 44 → 45 upgrade): rebuilt from the F45 libfprint 1.94.100
+  SRPM with the same patch and spec, no changes needed; enrolled prints and
+  pairing carried over
 - enroll, verify, GDM login and sudo work; the paired state survives a reboot
 
 ## Before you start: pairing
@@ -47,6 +50,10 @@ rpmbuild -bb ~/rpmbuild/SPECS/libfprint.spec
 sudo dnf install ~/rpmbuild/RPMS/x86_64/libfprint-1.94.100-1.vfs0090.*.rpm
 fprintd-enroll
 ```
+
+The same steps work on Fedora 44 and 45. After a Fedora release upgrade the old
+build keeps working if it was pinned, but rebuild it from the new release's
+SRPM so it links against that release's libraries, then move the pin.
 
 Other distributions: apply `0001-vfs0090-driver.patch` to the libfprint
 v1.94.100 source (`patch -p1`) and build with meson as usual; the driver needs
